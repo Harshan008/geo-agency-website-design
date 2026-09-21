@@ -6,6 +6,7 @@ import { site } from "@/lib/site"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { GlowField } from "@/components/glow-field"
+import { CitationGraph } from "@/components/citation-graph"
 import "./globals.css"
 
 const inter = Inter({
@@ -91,6 +92,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <GlowField />
+        <CitationGraph />
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />

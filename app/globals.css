@@ -128,23 +128,23 @@
     color: transparent;
   }
 
-  /* 3-D glass mirror sphere — blue sea effect, used for the brand mark */
+  /* 3-D glass mirror sphere — gold, used for the brand mark */
   .icon-mirror-sphere {
     position: relative;
     isolation: isolate;
     background: radial-gradient(
       circle at 32% 26%,
-      oklch(0.98 0.03 210) 0%,
-      oklch(0.88 0.1 218) 16%,
-      oklch(0.66 0.17 226) 45%,
-      oklch(0.4 0.16 244) 78%,
-      oklch(0.22 0.11 254) 100%
+      oklch(0.98 0.04 90) 0%,
+      oklch(0.92 0.08 85) 16%,
+      oklch(0.81 0.14 82) 45%,
+      oklch(0.55 0.15 75) 78%,
+      oklch(0.32 0.1 68) 100%
     );
     box-shadow:
-      inset -3px -3px 6px oklch(0.12 0.08 255 / 0.7),
-      inset 2px 3px 5px oklch(1 0 0 / 0.5),
-      0 0 12px oklch(0.65 0.18 224 / 0.55),
-      0 0 26px oklch(0.55 0.2 230 / 0.35);
+      inset -3px -3px 6px oklch(0.2 0.05 68 / 0.7),
+      inset 2px 3px 5px oklch(1 0 0.03 85 / 0.5),
+      0 0 12px oklch(0.81 0.12 82 / 0.55),
+      0 0 26px oklch(0.7 0.15 76 / 0.35);
   }
   .icon-mirror-sphere::after {
     content: "";
@@ -168,15 +168,15 @@
   .glow-interactive:hover,
   .glow-interactive:focus-visible {
     box-shadow:
-      0 0 0 1px oklch(0.65 0.18 224 / 0.35),
-      0 0 16px oklch(0.6 0.2 228 / 0.5),
-      0 0 36px oklch(0.55 0.2 230 / 0.28);
+      0 0 0 1px oklch(0.81 0.12 82 / 0.4),
+      0 0 16px oklch(0.78 0.15 80 / 0.55),
+      0 0 36px oklch(0.7 0.15 76 / 0.3);
   }
   .glow-interactive:active {
     transform: scale(0.98);
   }
 
-  /* Ambient drifting light — blue sea glow field, sits behind page content */
+  /* Ambient drifting light — warm gold glow field, sits behind page content */
   @keyframes drift-a {
     0%,
     100% {
@@ -213,7 +213,7 @@
   .glow-orb-1 {
     background: radial-gradient(
       circle,
-      oklch(0.6 0.18 230 / 0.55),
+      oklch(0.78 0.14 82 / 0.5),
       transparent 70%
     );
     animation:
@@ -223,7 +223,7 @@
   .glow-orb-2 {
     background: radial-gradient(
       circle,
-      oklch(0.72 0.13 208 / 0.4),
+      oklch(0.7 0.12 70 / 0.4),
       transparent 70%
     );
     animation:
@@ -233,7 +233,7 @@
   .glow-orb-3 {
     background: radial-gradient(
       circle,
-      oklch(0.5 0.19 246 / 0.4),
+      oklch(0.6 0.15 60 / 0.4),
       transparent 70%
     );
     animation:
@@ -246,6 +246,60 @@
     .glow-orb-2,
     .glow-orb-3 {
       animation: none;
+    }
+  }
+
+  /* Citation graph — nodes + lines that draw themselves in as you scroll,
+     tying the background to the "engines build a knowledge graph of you" idea */
+  .citation-line {
+    fill: none;
+    stroke: oklch(0.81 0.12 82 / 0.4);
+    stroke-width: 0.15;
+    stroke-dasharray: 150;
+    stroke-dashoffset: 150;
+  }
+  .citation-node {
+    fill: oklch(0.85 0.13 82 / 0.7);
+    opacity: 0;
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+
+  @keyframes draw-citation-line {
+    from {
+      stroke-dashoffset: 150;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes appear-citation-node {
+    from {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .citation-line {
+      animation: draw-citation-line linear both;
+      animation-timeline: scroll(root block);
+    }
+    .citation-node {
+      animation: appear-citation-node linear both;
+      animation-timeline: scroll(root block);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .citation-line,
+    .citation-node {
+      animation: none;
+      opacity: 0;
     }
   }
 }
