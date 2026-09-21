@@ -1,12 +1,6 @@
 "use server"
 
-export type FormState = {
-  status: "idle" | "success" | "error"
-  message?: string
-  errors?: Record<string, string>
-}
-
-export const initialFormState: FormState = { status: "idle" }
+import type { FormState } from "@/lib/form-state"
 
 function text(data: FormData, key: string) {
   return String(data.get(key) ?? "").trim()

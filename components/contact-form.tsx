@@ -5,7 +5,8 @@ import { useFormStatus } from "react-dom"
 import { ArrowRight, Loader2 } from "lucide-react"
 import { Field, FormStatus } from "@/components/form-field"
 import { companyTypes, contactObjectives } from "@/lib/site"
-import { submitContact, initialFormState } from "@/lib/actions"
+import { submitContact } from "@/lib/actions"
+import { initialFormState } from "@/lib/form-state"
 
 function SubmitButton() {
   const { pending } = useFormStatus()
