@@ -16,6 +16,7 @@ import { InsightCard } from "@/components/insight-card"
 import { ResultCard } from "@/components/result-card"
 import { CtaLink } from "@/components/cta-link"
 import { CtaBand } from "@/components/cta-band"
+import { ClientProof } from "@/components/client-proof"
 import {
   services,
   insights,
@@ -191,6 +192,9 @@ export default function HomePage() {
           ))}
         </div>
       </ScrollReveal>
+
+      {/* Client outcomes — renders only once real testimonials exist */}
+      <ClientProof />
 
       {/* Founder credibility */}
       <section className="border-y border-border/60 bg-card/20">

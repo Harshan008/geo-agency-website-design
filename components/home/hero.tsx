@@ -1,6 +1,7 @@
 import { Eyebrow } from "@/components/eyebrow"
 import { CtaLink } from "@/components/cta-link"
 import { secondaryCta } from "@/lib/site"
+import { SocialLinks } from "@/components/social-links"
 
 /**
  * The signature visual is a stylized generative-answer card: a prompt, an
@@ -138,6 +139,9 @@ export function Hero() {
               View Services
             </CtaLink>
           </div>
+
+          {/* Small, unobtrusive founder profiles */}
+          <SocialLinks />
 
           <dl className="mt-1 grid max-w-lg grid-cols-3 gap-x-6 border-t border-border/60 pt-6 text-sm">
             {[

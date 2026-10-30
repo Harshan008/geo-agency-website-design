@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { services, site } from "@/lib/site"
+import { contactDetails, services, site } from "@/lib/site"
+import { SocialLinks } from "@/components/social-links"
 
 const columns = [
   {
@@ -56,6 +57,21 @@ export function SiteFooter() {
             >
               {site.email}
             </a>
+            {/* Address and phone appear only once set in lib/site.ts */}
+            {contactDetails.phone && (
+              <a
+                href={`tel:${contactDetails.phone.replace(/[^+\d]/g, "")}`}
+                className="text-sm text-foreground/80 hover:text-primary"
+              >
+                {contactDetails.phone}
+              </a>
+            )}
+            {contactDetails.address && (
+              <address className="text-sm not-italic text-muted-foreground">
+                {contactDetails.address}
+              </address>
+            )}
+            <SocialLinks className="pt-1" />
           </div>
 
           {columns.map((col) => (

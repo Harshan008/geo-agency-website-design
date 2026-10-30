@@ -32,6 +32,16 @@ export const metadata: Metadata = {
   description: site.description,
   applicationName: site.name,
   alternates: { canonical: "/" },
+  // Favicons generated from the Lumen logo — sources in public/brand/.
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/brand/icon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/brand/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/brand/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: { url: "/brand/apple-icon.png", sizes: "180x180" },
+  },
   openGraph: {
     type: "website",
     siteName: site.name,

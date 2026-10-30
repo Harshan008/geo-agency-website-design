@@ -707,3 +707,27 @@ export const auditLimitations = [
   "Signals are scored against our own published criteria, not against any engine's internal ranking system.",
   "Pages that are not publicly accessible cannot be assessed.",
 ]
+
+// === BUSINESS CONTACT DETAILS ===
+// Shown in the footer only when set. Leave null until real details exist —
+// a fake address or phone number is worse for trust than none.
+export const contactDetails: { address: string | null; phone: string | null } = {
+  address: null, // e.g. "Street, City, Postcode, Country"
+  phone: null, // e.g. "+91 …"
+}
+
+// === CLIENT PROOF ===
+// The homepage "Client outcomes" section renders only when this list has
+// entries. Add a client only with their permission, and only with a result
+// you can show evidence for. `name` may be an anonymised description.
+export type Testimonial = {
+  name: string
+  role: string
+  outcome: string
+  quote: string
+  logo?: { src: string; alt: string }
+  /** YouTube/Vimeo embed URL — the first entry with one becomes the video block. */
+  videoUrl?: string
+}
+
+export const testimonials: Testimonial[] = []
