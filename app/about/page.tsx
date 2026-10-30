@@ -5,6 +5,7 @@ import { PageHeader } from "@/components/page-header"
 import { SectionHeading } from "@/components/section-heading"
 import { KnowledgeGraph } from "@/components/knowledge-graph"
 import { CtaBand } from "@/components/cta-band"
+import { StoryScroll } from "@/components/story-scroll"
 import { founder, services, methodology, site } from "@/lib/site"
 
 export const metadata: Metadata = {
@@ -96,6 +97,9 @@ export default function AboutPage() {
           </dl>
         </div>
       </section>
+
+      {/* === STORY: scroll-driven narrative with a pinned visual === */}
+      <StoryScroll />
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">

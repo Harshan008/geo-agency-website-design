@@ -9,6 +9,7 @@ import {
   Quote,
 } from "lucide-react"
 import { Hero } from "@/components/home/hero"
+import { ScrollReveal } from "@/components/scroll-reveal"
 import { SectionHeading } from "@/components/section-heading"
 import { ServiceCard } from "@/components/service-card"
 import { InsightCard } from "@/components/insight-card"
@@ -58,7 +59,7 @@ export default function HomePage() {
       <Hero />
 
       {/* The shift — presented as a numbered citation ledger */}
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+      <ScrollReveal as="section" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
         <div className="max-w-3xl">
           <SectionHeading
             eyebrow="The shift"
@@ -96,11 +97,11 @@ export default function HomePage() {
             </li>
           ))}
         </ol>
-      </section>
+      </ScrollReveal>
 
       {/* Strategy call pitch */}
       <section className="border-y border-border/60 bg-card/20">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+        <ScrollReveal className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
           <div className="mx-auto max-w-3xl text-center">
             <SectionHeading
               eyebrow="Your traction"
@@ -111,11 +112,11 @@ export default function HomePage() {
               Book a Strategy Call
             </CtaLink>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Methodology */}
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+      <ScrollReveal as="section" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
         <SectionHeading
           eyebrow="Methodology"
           title="A repeatable system, not a one-off checklist"
@@ -149,11 +150,11 @@ export default function HomePage() {
             Explore the full methodology
           </CtaLink>
         </div>
-      </section>
+      </ScrollReveal>
 
       {/* Services */}
       <section className="border-t border-border/60 bg-card/20">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+        <ScrollReveal className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading
               eyebrow="Services"
@@ -169,11 +170,11 @@ export default function HomePage() {
               <ServiceCard key={service.slug} service={service} index={i} />
             ))}
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Evidence / results */}
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+      <ScrollReveal as="section" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
             eyebrow="Evidence"
@@ -189,11 +190,11 @@ export default function HomePage() {
             <ResultCard key={study.slug} study={study} />
           ))}
         </div>
-      </section>
+      </ScrollReveal>
 
       {/* Founder credibility */}
       <section className="border-y border-border/60 bg-card/20">
-        <div className="mx-auto max-w-4xl px-4 py-20 text-center sm:px-6 sm:py-28">
+        <ScrollReveal className="mx-auto max-w-4xl px-4 py-20 text-center sm:px-6 sm:py-28">
           <Quote
             aria-hidden
             className="mx-auto mb-6 size-8 text-primary/60"
@@ -218,11 +219,11 @@ export default function HomePage() {
               <ArrowUpRight className="size-4" />
             </Link>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Insights */}
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+      <ScrollReveal as="section" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
             eyebrow="Insights"
@@ -238,7 +239,7 @@ export default function HomePage() {
             <InsightCard key={insight.slug} insight={insight} />
           ))}
         </div>
-      </section>
+      </ScrollReveal>
 
       <CtaBand />
     </>

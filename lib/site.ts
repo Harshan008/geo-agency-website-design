@@ -1,12 +1,12 @@
 export const site = {
-  name: "[AGENCY NAME]",
-  shortName: "[AGENCY NAME]",
+  name: "Lumen",
+  shortName: "Lumen",
   domain: "https://example.com",
   tagline: "Generative Engine Optimization",
   description:
     "A founder-led Generative Engine Optimization (GEO) agency. We audit and improve how AI search and answer systems discover, understand, mention, summarize and cite your business.",
-  email: "[EMAIL]",
-  founder: "[FOUNDER NAME]",
+  email: "harshan@lumencito.com",
+  founder: "Harshan",
   founderRole: "Founder & Principal GEO Strategist",
 }
 
@@ -648,7 +648,7 @@ export const results: ResultStudy[] = [
 export const founder = {
   name: site.founder,
   role: site.founderRole,
-  location: "[LOCATION]",
+  location: "India",
   bio: [
     `${site.founder} is the founder of ${site.name} and leads every engagement directly. The work is diagnostic before it is creative: establish how generative engines currently read a business, isolate what blocks accurate citation, then fix those specific things.`,
     "The practice is deliberately narrow. It covers how AI search and answer systems discover, interpret, mention, summarize and cite a business — and nothing outside that.",
@@ -661,8 +661,8 @@ export const founder = {
     "AI visibility measurement and reporting",
   ],
   profiles: [
-    { label: "LinkedIn", url: "[LINKEDIN URL]" },
-    { label: "X", url: "[X URL]" },
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/harshan-24b689421/" },
+    { label: "X", url: "https://x.com/Adaptus007" },
   ],
 }
 

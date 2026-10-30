@@ -253,13 +253,13 @@
      tying the background to the "engines build a knowledge graph of you" idea */
   .citation-line {
     fill: none;
-    stroke: oklch(0.81 0.12 82 / 0.4);
+    stroke: oklch(0.81 0.12 82 / 0.16);
     stroke-width: 0.15;
     stroke-dasharray: 150;
     stroke-dashoffset: 150;
   }
   .citation-node {
-    fill: oklch(0.85 0.13 82 / 0.7);
+    fill: oklch(0.85 0.13 82 / 0.3);
     opacity: 0;
     transform-origin: center;
     transform-box: fill-box;
@@ -286,11 +286,11 @@
 
   @supports (animation-timeline: scroll()) {
     .citation-line {
-      animation: draw-citation-line linear both;
+      animation: draw-citation-line ease-in-out both;
       animation-timeline: scroll(root block);
     }
     .citation-node {
-      animation: appear-citation-node linear both;
+      animation: appear-citation-node ease-in-out both;
       animation-timeline: scroll(root block);
     }
   }
@@ -302,4 +302,5 @@
       opacity: 0;
     }
   }
+
 }
