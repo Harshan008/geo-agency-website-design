@@ -1,0 +1,25 @@
+# Copy to `.dev.vars` for local `wrangler dev`. Never commit `.dev.vars`.
+# In production these are set with `wrangler secret put <NAME>`, not here.
+
+# Resend — https://resend.com/api-keys
+RESEND_API_KEY=""
+# Where lead notifications are delivered.
+LEAD_NOTIFY_TO="harshan@lumencito.com"
+# Must be an address on a domain you have verified in Resend.
+LEAD_NOTIFY_FROM="leads@yourdomain.com"
+
+# Cloudflare Turnstile — https://dash.cloudflare.com → Turnstile
+TURNSTILE_SECRET_KEY=""
+
+# Random string used to salt the IP hash kept for rate limiting.
+# Generate with: openssl rand -hex 32
+IP_HASH_SALT=""
+
+# Cloudflare Access, protecting /admin and /api/admin.
+# Team domain, e.g. yourteam.cloudflareaccess.com
+CF_ACCESS_TEAM_DOMAIN=""
+# The Access application's Audience (AUD) tag.
+CF_ACCESS_AUD=""
+
+# Absolute site origin, used to build the admin link inside notification emails.
+ADMIN_BASE_URL="https://yourdomain.com"

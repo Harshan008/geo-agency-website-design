@@ -4,9 +4,11 @@ import { useActionState } from "react"
 import { useFormStatus } from "react-dom"
 import { ArrowRight, Loader2 } from "lucide-react"
 import { Field, FormStatus } from "@/components/form-field"
+import { TurnstileWidget } from "@/components/turnstile-widget"
 import { companyTypes, contactObjectives } from "@/lib/site"
 import { submitContact } from "@/lib/actions"
 import { initialFormState } from "@/lib/form-state"
+import { honeypotField } from "@/lib/form-fields"
 
 function SubmitButton() {
   const { pending } = useFormStatus()
@@ -32,7 +34,7 @@ function SubmitButton() {
   )
 }
 
-export function ContactForm() {
+export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey?: string | null }) {
   const [state, action] = useActionState(submitContact, initialFormState)
   const errors = state.errors ?? {}
 
@@ -57,6 +59,18 @@ export function ContactForm() {
       {state.status === "error" && state.message && (
         <FormStatus tone="error">{state.message}</FormStatus>
       )}
+
+      {/* Honeypot: hidden from people, filled in by naive bots. */}
+      <div aria-hidden className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label htmlFor={honeypotField}>Role</label>
+        <input
+          id={honeypotField}
+          name={honeypotField}
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Name" name="name" error={errors.name}>
@@ -147,6 +161,8 @@ export function ContactForm() {
       >
         {(props) => <textarea {...props} rows={3} />}
       </Field>
+
+      <TurnstileWidget siteKey={turnstileSiteKey} action="contact" />
 
       <SubmitButton />
     </form>

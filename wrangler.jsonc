@@ -1,14 +1,36 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "geo-agency-site",
-  "compatibility_date": "2026-09-21",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  "main": "vinext/server/fetch-handler",
-  "assets": {
-    "directory": "dist/client",
-    "not_found_handling": "none",
-    "binding": "ASSETS"
-  }
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "geo-agency-website-design",
+	"compatibility_date": "2026-09-21",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"main": "vinext/server/fetch-handler",
+	"assets": {
+		"directory": "dist/client",
+		"not_found_handling": "none",
+		"binding": "ASSETS"
+	},
+	// Off by design: the admin dashboard is protected by a Cloudflare Access
+	// application scoped to lumencito.com, which a workers.dev URL bypasses.
+	"workers_dev": false,
+	"routes": [
+		{
+			"pattern": "lumencito.com/*",
+			"zone_name": "lumencito.com"
+		},
+		{
+			"pattern": "www.lumencito.com/*",
+			"zone_name": "lumencito.com"
+		}
+	],
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "geo_agency_leads",
+			"database_id": "f425ebc8-f9bb-4fd6-9bdc-796a14ae1782",
+			"migrations_dir": "migrations",
+			"remote": true
+		}
+	]
 }

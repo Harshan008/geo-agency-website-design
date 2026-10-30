@@ -4,9 +4,11 @@ import { useActionState } from "react"
 import { useFormStatus } from "react-dom"
 import { ArrowRight, Loader2 } from "lucide-react"
 import { Field, FormStatus } from "@/components/form-field"
+import { TurnstileWidget } from "@/components/turnstile-widget"
 import { companyTypes } from "@/lib/site"
 import { submitAudit } from "@/lib/actions"
 import { initialFormState } from "@/lib/form-state"
+import { honeypotField } from "@/lib/form-fields"
 
 function SubmitButton() {
   const { pending } = useFormStatus()
@@ -32,7 +34,7 @@ function SubmitButton() {
   )
 }
 
-export function AuditForm() {
+export function AuditForm({ turnstileSiteKey }: { turnstileSiteKey?: string | null }) {
   const [state, action] = useActionState(submitAudit, initialFormState)
   const errors = state.errors ?? {}
 
@@ -70,6 +72,18 @@ export function AuditForm() {
       {state.status === "error" && state.message && (
         <FormStatus tone="error">{state.message}</FormStatus>
       )}
+
+      {/* Honeypot: hidden from people, filled in by naive bots. */}
+      <div aria-hidden className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label htmlFor={`audit-${honeypotField}`}>Role</label>
+        <input
+          id={`audit-${honeypotField}`}
+          name={honeypotField}
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
 
       <Field
         label="Website URL"
@@ -128,6 +142,8 @@ export function AuditForm() {
           />
         )}
       </Field>
+
+      <TurnstileWidget siteKey={turnstileSiteKey} action="audit" />
 
       <SubmitButton />
 
